@@ -4,9 +4,9 @@
             <ul class="section menu">
                <li><a class="menuitem">Site Option</a>
                     <ul class="submenu">
-                        <li><a href="titleslogan.php">Our Goal</a></li>
-                        <li><a href="social.php">Social Media</a></li>
-                        <li><a href="copyright.php">Copyright</a></li>
+                        <li><a href="titleslogan.php">Our Goal test</a></li>
+                        <li><a href="social.php">Social Media test</a></li>
+                        <li><a href="copyright.php">Copyright must</a></li>
                         
                     </ul>
                 </li>
