@@ -68,13 +68,14 @@ if($login==false){
         <div class="section group">
             <div class="payment">
             <?php
-                $cmrid= Session::get('id');
+               
+                $cmrid=  $_SESSION["id"];
                 $amount =  $ct->payableAmount($cmrid);
                 if($amount){
                
                     while($result= $amount->fetch_assoc()){
                         $price = $result['price'];
-                        Session::set("price",$price);
+                        Session::set("$cmrid",$price);
                        
                     }
                 }

@@ -188,6 +188,22 @@
         return $msg;
      }
   }
+  public function getAllUsers(){
+    $allcus = "SELECT * FROM  tbl_customer";
+    $cuschk =$this->db->select($allcus);
+    return $cuschk;
+  }
+  public function delCustomer($id){
+    $query= "DELETE  FROM tbl_customer where  id = '$id' ";
+    $delmsg = $this->db->delete($query);
+    if($delmsg){
+        echo "<script>window.location='alluser.php';</script>";
+        
+     }else{
+        $msg = "<span style='color:red'>Customer not  Delete </span>";
+        return $msg;
+     }
+  }
  }
 
 ?>
