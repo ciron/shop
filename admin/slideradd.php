@@ -1,10 +1,29 @@
-<?php include 'include/header.php';?>
-<?php include 'include/sidebar.php';?>
+<?php 
+    include_once 'include/header.php';
+    include_once 'include/sidebar.php';
+    
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../classes/product.php');
+   
+?>
+<?php 
+    $pd= new product();
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+    
+    $slideradd= $pd->sliderAdding($_POST,$_FILES);
+}	
+
+?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Slider</h2>
-    <div class="block">               
-         <form action="addslider.php" method="post" enctype="multipart/form-data">
+    <div class="block">    
+    <?php 
+    if(isset( $slideradd)){
+        echo  $slideradd;
+    }
+    ?>           
+         <form action="" method="post" enctype="multipart/form-data">
             <table class="form">     
                 <tr>
                     <td>

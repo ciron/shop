@@ -108,6 +108,7 @@
     
   }
   public function payableAmount($cmrid){
+   
    $query= "SELECT price FROM tbl_order where  cmrid ='$cmrid' AND date = now() ";
    $getamount = $this->db->select($query);
    

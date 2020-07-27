@@ -111,14 +111,15 @@
                     if ($productupdate){
                     
                         $msg = "Product inserted Succesfully";
-                        return $msg;
+                        return $msg; 
                     
                     }else {
                         $msg = "Product inserted failed";
                         return $msg;
                     }
                 }
-            }else {
+            }
+            else {
                 $query = "UPDATE tbl_product SET productname ='$productname',catid ='$catid',brandid ='$brandid',body ='$body',price ='$price', types ='$types' where productid='$id'";
 
                 $productupdate = $this->db->update($query);
@@ -233,6 +234,59 @@
         $query= "SELECT * FROM tbl_product where catid ='45' ORDER BY productid DESC ";
         $result = $this->db->select($query);
         return $result;
+    }
+    public function sliderAdding($data,$files){
+        $title = mysqli_real_escape_string($this->db->link,$data['title']);
+        
+ 
+    
+         $permited  = array('jpg', 'jpeg', 'png');
+         $file_name = $_FILES['image']['name'];
+         $file_size =$_FILES['image']['size'];
+         $file_tmp =$_FILES['image']['tmp_name'];
+         $file_type=$_FILES['image']['type'];
+         $div = explode('.', $file_name);
+         $file_ext = strtolower(end($div));
+         $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
+         $uploaded_image = "sliderimg/".$unique_image;
+
+
+        
+         $chquery = "SELECT * FROM tbl_slider WHERE title = '$title'";
+         $getckpro = $this->db->select($chquery);
+         if($getckpro){
+            $msg = "This slider title already Added into website!!";
+            return $msg;
+         }
+         if(empty($title)){
+             $msg = "Title must not be empty!! ";
+             return $msg;
+         }
+         if(move_uploaded_file($file_tmp, $uploaded_image)){
+             if (in_array($file_ext, $permited) === false) {
+                 echo "<span class='error'>You can upload only:-"
+                 .implode(', ', $permited)."</span>";
+             }
+             elseif ($file_size >2097134) {
+                 echo "<span class='error'>Image Size should be less then 2MB!
+                 </span>";
+             }
+             else {
+                 move_uploaded_file($file_tmp, $uploaded_image);
+                 $query  = "INSERT INTO tbl_slider(title,image) VALUES('$title','$uploaded_image')";
+     
+                 $slideinsert = $this->db->inserted($query);
+                 if ($slideinsert){
+                    
+                     $msg = "Slider insert succesfully";
+                     return $msg;
+                    
+                 }else {
+                     $msg = "Slider insert failed";
+                     return $msg;
+                 }
+             }
+         }
     }
 }
 
