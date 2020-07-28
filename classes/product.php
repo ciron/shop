@@ -288,6 +288,25 @@
              }
          }
     }
+    public function getAllSlider(){       
+        $query= "SELECT * FROM tbl_slider  ORDER BY id DESC ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function delslideById($id){       
+        $query= "DELETE FROM tbl_slider  WHERE id='$id' ";
+        $result = $this->db->delete($query);
+        if($result){
+            $msg="Slider Deleted Successfully";
+        }else{
+            $msg="Slider Deleted Failed";
+        }
+    }
+    public function getSlidershow(){
+        $query= "SELECT * FROM tbl_slider  ORDER BY id DESC limit 5";
+        $result = $this->db->select($query);
+        return $result;
+    }
 }
 
 

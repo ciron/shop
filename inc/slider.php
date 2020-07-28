@@ -1,3 +1,8 @@
+<?php 
+     $filepath = realpath(dirname(__FILE__));
+     include_once ($filepath.'/../classes/product.php');
+  $pd = new product();
+?>
 <div class="header_bottom">
     <div class="header_bottom_left">
             <div class="section group">
@@ -100,10 +105,18 @@
         <section class="slider">
             <div class="flexslider">
                 <ul class="slides">
-                    <li><img src="images/slider1.jpg" alt=""/></li>
-                    <li><img src="images/slider2.jpg" alt=""/></li>
-                    <li><img src="images/slider3.jpg" alt=""/></li>
-                    <li><img src="images/slider4.jpg" alt=""/></li>
+                   
+                    <?php 
+                   $getslideshow =$pd->getSlidershow();
+                   if ($getslideshow){
+                     
+                       while($result=$getslideshow->fetch_assoc()){
+                    ?>
+                       <li>  <img src="admin/<?php echo $result['image'];?>" alt="<?php echo $result['title'];?>"title="<?php echo $result['title'];?>"/> </li>
+                     <?php   
+                            }
+                     }
+                     ?> 
                 </ul>
             </div>
         </section>

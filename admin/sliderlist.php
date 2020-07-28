@@ -1,8 +1,25 @@
-<?php include 'include/header.php';?>
-<?php include 'include/sidebar.php';?>
+<?php 
+    include_once 'include/header.php';
+    include_once 'include/sidebar.php';
+    
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../classes/product.php');
+	$pd= new product();
+?>
+<?php
+	if(isset($_GET['delslide'])){
+		$id= $_GET['delslide'];
+		$deletslide = $pd->delslideById($id);
+	}
+?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Slider List</h2>
+		<?php 
+			if(isset($delslide)){
+				echo $delslide;
+			}
+		?>
         <div class="block">  
             <table class="data display datatable" id="example">
 			<thead>
@@ -14,16 +31,24 @@
 				</tr>
 			</thead>
 			<tbody>
-
+			<?php
+				 
+				$getslider =$pd->getAllSlider();
+				if ($getslider){
+					$serial=0;
+					while($result=$getslider->fetch_assoc()){
+						$serial++;
+			?>
 				<tr class="odd gradeX">
-					<td>01</td>
-					<td>Title of Slider</td>
-					<td><img src="" height="40px" width="60px"/></td>				
-				<td>
-					<a href="">Edit</a> || 
-					<a onclick="return confirm('Are you sure to Delete!');" >Delete</a> 
-				</td>
-					</tr>	
+					<td><?php echo $serial;?></td>
+					<td><?php  echo $result['title']?></td>
+					<td><img src="<?php echo $result['image'];?>" height="40px" width="60px"/></td>				
+					<td><a onclick="return confirm('Are you sure to Delete It?')" href="?delslide=<?php  echo $result['id']; ?>">Delete</a></td>
+				</tr>
+				<?php
+							}
+						}
+				?>	
 			</tbody>
 		</table>
 
