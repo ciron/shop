@@ -7,6 +7,7 @@
 
 <?php 
     include_once '../lib/session.php';
+    include_once '../lib/database.php';
     Session::checkSession();
     include_once '../helpers/format.php';
     include_once '../classes/customer.php';

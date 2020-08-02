@@ -201,37 +201,37 @@
         return $result;
     }
     public function getProductByTablet(){
-        $query= "SELECT * FROM tbl_product where catid ='46' ORDER BY productid DESC ";
+        $query= "SELECT * FROM tbl_product where catid ='46' ORDER BY productid DESC LIMIT 4";
         $result = $this->db->select($query);
         return $result;
     }
     public function getProductBySyrup(){
-        $query= "SELECT * FROM tbl_product where catid ='48' ORDER BY productid DESC ";
+        $query= "SELECT * FROM tbl_product where catid ='48' ORDER BY productid DESC LIMIT 4";
         $result = $this->db->select($query);
         return $result;
     }
     public function getProductByInjecttion(){
-        $query= "SELECT * FROM tbl_product where catid ='47' ORDER BY productid DESC ";
+        $query= "SELECT * FROM tbl_product where catid ='47' ORDER BY productid DESC LIMIT 4 ";
         $result = $this->db->select($query);
         return $result;
     }
     public function getProductByCapsules(){
-        $query= "SELECT * FROM tbl_product where catid ='44' ORDER BY productid DESC ";
+        $query= "SELECT * FROM tbl_product where catid ='44' ORDER BY productid DESC  LIMIT 4";
         $result = $this->db->select($query);
         return $result;
     }
     public function getProductByDrop(){
-        $query= "SELECT * FROM tbl_product where catid ='43' ORDER BY productid DESC ";
+        $query= "SELECT * FROM tbl_product where catid ='43' ORDER BY productid DESC LIMIT 4";
         $result = $this->db->select($query);
         return $result;
     }
     public function getProductByMedicine(){
-        $query= "SELECT * FROM tbl_product where catid ='31' ORDER BY productid DESC ";
+        $query= "SELECT * FROM tbl_product where catid ='31' ORDER BY productid DESC LIMIT 4";
         $result = $this->db->select($query);
         return $result;
     }
     public function getProductByLiquid(){
-        $query= "SELECT * FROM tbl_product where catid ='45' ORDER BY productid DESC ";
+        $query= "SELECT * FROM tbl_product where catid ='45' ORDER BY productid DESC LIMIT 4";
         $result = $this->db->select($query);
         return $result;
     }
