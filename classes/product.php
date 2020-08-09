@@ -307,6 +307,53 @@
         $result = $this->db->select($query);
         return $result;
     }
+    public function contactDescription($data){
+        $title = mysqli_real_escape_string($this->db->link,$data['title']);
+        $subtitle = mysqli_real_escape_string($this->db->link,$data['subtitle']);
+        $body = mysqli_real_escape_string($this->db->link,$data['body']);
+        if(empty($title)||empty($subtitle)||empty($body)){
+            $msg = " ALL Filed is required";
+            return $msg;
+        }else{
+            $query  = "INSERT INTO tbl_description(title,subtitle,body) VALUES('$title','$subtitle','$body')";
+        
+            $slideinsert = $this->db->inserted($query);
+            if ($slideinsert){
+            
+                $msg = "Description insert succesfully";
+                return $msg;
+            
+            }else {
+                $msg = "Description insert failed";
+                return $msg;
+            }
+        }
+    }
+    public function getDescription(){
+        $query= "SELECT * FROM tbl_description where desid ='2'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+   public function conDescupdate($data){
+    $title = mysqli_real_escape_string($this->db->link,$data['title']);
+    $subtitle = mysqli_real_escape_string($this->db->link,$data['subtitle']);
+    $body = mysqli_real_escape_string($this->db->link,$data['body']);
+    $query = "UPDATE tbl_description SET title='$title', subtitle='$subtitle', body ='$body' where desid='2'";
+    $result = $this->db->update($query);
+    return $result;
+   }
+   public function getAbout(){
+    $query= "SELECT * FROM tbl_about where aboutid ='1'";
+    $result = $this->db->select($query);
+    return $result;
+   }
+   public function geaboutdata($data){
+    $title = mysqli_real_escape_string($this->db->link,$data['title']);
+    $body = mysqli_real_escape_string($this->db->link,$data['body']);
+    $query = "UPDATE tbl_about SET title='$title', body ='$body' where aboutid='1'";
+    $result = $this->db->update($query);
+    return $result;
+   }
 }
 
 

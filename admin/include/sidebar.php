@@ -11,10 +11,16 @@
                     </ul>
                 </li>
 				
-                 <li><a class="menuitem">Update Pages</a>
+                 <li><a class="menuitem">About</a>
                     <ul class="submenu">
-                        <li><a>About Us</a></li>
-                        <li><a>Contact Us</a></li>
+                        <li><a href="aboutupdate.php">Aboutpage Add</a></li>
+                        <li><a href="aboutview.php">Aboutpage view</a></li>
+                    </ul>
+                </li>
+                <li><a class="menuitem">Contact</a>
+                    <ul class="submenu">                      
+                        <li><a href="contactdescription.php">Contact Description</a></li>
+                        <li><a href="condesuplist.php">Description List</a></li>
                     </ul>
                 </li>
                 <li><a class="menuitem">Slider Option</a>
