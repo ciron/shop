@@ -1,16 +1,18 @@
 <div class="grid_2">
     <div class="box sidemenu">
         <div class="block" id="section-menu">
-            <ul class="section menu">
-               <li><a class="menuitem">Site Option</a>
-                    <ul class="submenu">
-                        <li><a href="titleslogan.php">Our Goal</a></li>
-                        <li><a href="social.php">Social Media</a></li>
-                        <li><a href="copyright.php">Copyright</a></li>
+            <ul class="section menu">           
+                <li><a class="menuitem">Social Media</a>
+                    <ul class="submenu">                       
+                        <li><a href="social.php">Social Media update</a></li>                      
+                    </ul>
+                </li>
+                <li><a class="menuitem">Copyright</a>
+                    <ul class="submenu">                        
+                        <li><a href="copyright.php">Copyright Update</a></>
                         
                     </ul>
                 </li>
-				
                  <li><a class="menuitem">About</a>
                     <ul class="submenu">
                         <li><a href="aboutupdate.php">Aboutpage Add</a></li>

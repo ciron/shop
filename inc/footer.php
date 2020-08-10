@@ -47,7 +47,20 @@
 				</div>
 			</div>
 			<div class="copy_right">
-				<p>BUBT TEAM &amp; All rights Reseverd </p>
+			<?php 
+          $getcopy= $pd->getCopy();
+          if($getcopy){
+            while($value =  $getcopy->fetch_assoc()){
+
+       
+        ?>      
+        <p>
+         &copy; Copyright <a href="<?php echo $value['cpylink'];?>"><?php echo $value['copytext'];?></a>. All Rights Reserved.
+        </p>
+        <?php
+            }
+        }
+        ?>
 		   </div>
         </div>
     </div>

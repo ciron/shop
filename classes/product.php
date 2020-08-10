@@ -340,7 +340,10 @@
     $body = mysqli_real_escape_string($this->db->link,$data['body']);
     $query = "UPDATE tbl_description SET title='$title', subtitle='$subtitle', body ='$body' where desid='2'";
     $result = $this->db->update($query);
-    return $result;
+    if($result){
+        $msg= "Contact Description Updated Successfully";
+        return $msg;
+    }
    }
    public function getAbout(){
     $query= "SELECT * FROM tbl_about where aboutid ='1'";
@@ -352,7 +355,25 @@
     $body = mysqli_real_escape_string($this->db->link,$data['body']);
     $query = "UPDATE tbl_about SET title='$title', body ='$body' where aboutid='1'";
     $result = $this->db->update($query);
+    if($result){
+        $msg= "About Updated Successfully";
+        return $msg;
+    }
+   }
+   public function getCopy(){
+    $query= "SELECT * FROM tbl_copyright where copyid='1'";
+    $result = $this->db->select($query);
     return $result;
+   }
+   public function getCopydata($data){
+    $copytext = mysqli_real_escape_string($this->db->link,$data['copytext']);
+    $cpylink = mysqli_real_escape_string($this->db->link,$data['cpylink']);
+    $query = "UPDATE tbl_copyright SET copytext='$copytext', cpylink ='$cpylink' where copyid='1'";
+    $result = $this->db->update($query);
+    if($result){
+        $msg= "Copyright Updated Successfully";
+        return $msg;
+    }
    }
 }
 

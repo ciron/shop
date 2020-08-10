@@ -83,9 +83,7 @@ if(isset($_GET['delorder'])){
                         ?>
                     <td>N/A</td>
                         <?php }?>
-                
-              
-                
+             
             </tr>
             <?php 
                

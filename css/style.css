@@ -827,7 +827,7 @@ p.note{
  .copy_right p a{
     color:#747474;
 	font-size:12px;
-	text-decoration:underline;
+	text-decoration:none;
  }
  .copy_right p a:hover{
 	color:#BBB7B7;
