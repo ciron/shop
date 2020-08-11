@@ -58,8 +58,16 @@ if(isset($_GET['delorder'])){
                
                 <td>৳
                 <?php 
+                    $getdiscount = $cmr->getCusDiscountData($id);
+                    if($getdiscount){
+                    $delicharge = 60;
                     $total = $result['price']* $result['quantity'];
                     echo $total;
+                    }else{
+                    $delicharge = 150;
+                    $total = $result['price']* $result['quantity'];
+                    echo $total;
+                    }
                 ?>
                 </td>
                 <td><?php echo $fm->formatDate($result['date']);?></td>

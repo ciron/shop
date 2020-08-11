@@ -87,7 +87,9 @@
 								<div>
 									<input type="text"name="phone" placeholder="Phone:" class="reg-details">
 								</div>
-									
+								<div>
+									<input type="date"name="birthday" placeholder="Birthday:" class="reg-details">
+								</div>	
 								<div>
 										<input type="password" name="pass" placeholder="Password:" class="reg-details">
 								</div>

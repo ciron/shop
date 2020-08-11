@@ -20,9 +20,10 @@
       $address = mysqli_real_escape_string($this->db->link,$data['address']);
       $city  = mysqli_real_escape_string($this->db->link,$data['city']);
       $phone = mysqli_real_escape_string($this->db->link,$data['phone']);
+      $birthday = mysqli_real_escape_string($this->db->link,$data['birthday']);
       $pass  = mysqli_real_escape_string($this->db->link,md5($data['pass']));
 
-      if(empty($customername)||empty($email)||empty($address)||empty($city)||empty($phone)||empty($pass)){
+      if(empty($customername)||empty($email)||empty($address)||empty($city)||empty($phone)||empty($birthday)||empty($pass)){
          $msg = "<span style='color:red;font-size:20px;'>Filed  must not be empty!!</span>";
          return $msg;
      }
@@ -32,7 +33,7 @@
       $msg = "<span style='color:red;font-size:20px;'>This Email Or Phone is already Exist!! please try anotherone!</span>";
       return $msg;
      }else {
-        $query = "INSERT INTO tbl_customer(names,email,address,city,phone,pass) VALUES ('$customername','$email','$address','$city','$phone','$pass')";
+        $query = "INSERT INTO tbl_customer(names,email,address,city,phone,birthday,pass) VALUES ('$customername','$email','$address','$city','$phone','$birthday','$pass')";
         $customerdata =$this->db->inserted($query);
         if($customerdata){
            $msg = "Registration Succefully";
@@ -71,9 +72,9 @@
     }
    public function getCustomerData($id){
       $cuspro = "SELECT * FROM tbl_customer WHERE id= '$id' ";
-      $cusprochk =$this->db->select($cuspro);
-      return $cusprochk;
-    }
+      $cusprochk =$this->db->select($cuspro);      
+        return $cusprochk;        
+}
     public function customerUpdateinfo($data,$cusid){
       $customername = mysqli_real_escape_string($this->db->link,$data['names']);
       $email  = mysqli_real_escape_string($this->db->link,$data['email']);
@@ -204,6 +205,13 @@
         return $msg;
      }
   }
+  public function getCusDiscountData($id){
+    $cuspro = "SELECT * FROM tbl_customer WHERE id= '$id' AND city ='Dhaka'";
+    $cusprochk =$this->db->select($cuspro);      
+      return $cusprochk;        
+}
  }
 
+ $b= new Customer() ;    
+$dv=$b->getCusDiscountData('Dhaka');
 ?>

@@ -57,7 +57,7 @@ if(isset($_GET['orderid']) && $_GET['orderid']== 'order'){
                     </tr>
                 <?php 
                     $sum = $sum+$total;
-                    Session::set("sum",$sum);
+                    
                         }
                     }
                 ?>
@@ -73,12 +73,37 @@ if(isset($_GET['orderid']) && $_GET['orderid']== 'order'){
                         <td>10%</td>
                     </tr>
                     <tr>
+                        <th width="60%">Delivery Charge : </th>
+                     
+                        <td >
+                        <?php 
+                        $getdiscount = $cmr->getCusDiscountData($id);
+                        if($getdiscount){?>
+                           60 TK  (In Dhaka City)
+                            <?php }else{ ?>
+                                150 TK (Outside Of Dhaka City)
+                                <?php } ?>
+                   
+                      </td>
+                       
+                    </tr>
+                    <tr>
                         <th>Grand Total :</th>
                         <td>TK.
                         <?php 
+                        $getdiscount = $cmr->getCusDiscountData($id);
+                        if($getdiscount){
+
+                            $delicharge = 60;
                             $vat = $sum*0.1;
-                            $grandtotal = $sum +$vat;
+                            $grandtotal = $sum +$vat+$delicharge ;
                             echo $grandtotal;
+                        }else{
+                            $delicharge = 150;
+                            $vat = $sum*0.1;
+                            $grandtotal = $sum +$vat+$delicharge ;
+                            echo $grandtotal;
+                        }
                         ?> BDT
                         </td>
                     </tr>
@@ -122,6 +147,11 @@ if(isset($_GET['orderid']) && $_GET['orderid']== 'order'){
                             <td style="text-align:left;">:</td>
                             <td style="text-align:left;"><?php echo $result['phone'];?></td>
                         </tr>
+                        <tr>
+                            <td style="text-align:left;">Age</td>
+                            <td style="text-align:left;">:</td>                           
+                            <td style="text-align:left;"><?php echo $result['birthday'];?></td>
+                        </tr>
                         <tr >
                             <td ></td>
                             
@@ -133,6 +163,7 @@ if(isset($_GET['orderid']) && $_GET['orderid']== 'order'){
                 <?php
                             }
                         }
+                      
                 ?>
             
             </div>

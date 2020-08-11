@@ -6,14 +6,18 @@
 
 ?>
 <?php 
+  
+
  class cart{
     private $db;
     private $fm;
+    private $b;
     public function __construct(){
        $this->db = new Database();
        $this->fm = new Format();
-
+       $this->b= new Customer() ;  
     }
+    
     public function addToCart($quantity,$id){
       $quantity= $this->fm->validation($quantity);
 
@@ -88,6 +92,7 @@
      $result=$this->db->delete($query);
   }
   public function orderProduct($cmrid){
+   $dv=$this->b->getCusDiscountData($id);
    $sid  = session_id();
    $query= "SELECT * FROM tbl_cart where  sid ='$sid' ";
      $getPro = $this->db->select($query);
@@ -98,7 +103,14 @@
            $quantity=$result['quantity'];
            $price=$result['price'] * $quantity;
            $vat = $price*0.1;
-            $grandtotal = $price +$vat;
+           $dakacharge =60;
+           $othercharge =150;
+           if($dv){
+            $grandtotal = $price +$vat + $dakacharge;
+           }else {
+            $grandtotal = $price +$vat + $othercharge;
+           }
+           
            $image=$result['image'];
            $query  = "INSERT INTO tbl_order(cmrid,productid,productname,quantity,price,image) VALUES('$cmrid','$productid','$productname','$quantity','$grandtotal','$image')";
 
