@@ -15,7 +15,7 @@
     public function __construct(){
        $this->db = new Database();
        $this->fm = new Format();
-       $this->b= new Customer() ;  
+       $this->b  = new Customer();  
     }
     
     public function addToCart($quantity,$id){
@@ -91,8 +91,7 @@
      $query = "DELETE FROM tbl_cart WHERE `sid` ='$sid'";
      $result=$this->db->delete($query);
   }
-  public function orderProduct($cmrid){
-   $dv=$this->b->getCusDiscountData($id);
+  public function orderProduct($cmrid){   
    $sid  = session_id();
    $query= "SELECT * FROM tbl_cart where  sid ='$sid' ";
      $getPro = $this->db->select($query);
@@ -103,13 +102,9 @@
            $quantity=$result['quantity'];
            $price=$result['price'] * $quantity;
            $vat = $price*0.1;
-           $dakacharge =60;
-           $othercharge =150;
-           if($dv){
-            $grandtotal = $price +$vat + $dakacharge;
-           }else {
-            $grandtotal = $price +$vat + $othercharge;
-           }
+          
+            $grandtotal = $price +$vat;
+      
            
            $image=$result['image'];
            $query  = "INSERT INTO tbl_order(cmrid,productid,productname,quantity,price,image) VALUES('$cmrid','$productid','$productname','$quantity','$grandtotal','$image')";
@@ -163,10 +158,11 @@
          return $msg;
       }
   }
-  public function updateOrderquantity($cartid,$quantity){
-   $cartid = mysqli_real_escape_string($this->db->link,$cartid);
+  public function updateOrderquantity($orderid,$quantity){
+   $orderid = mysqli_real_escape_string($this->db->link,$orderid);
    $quantity = mysqli_real_escape_string($this->db->link,$quantity);
-   $query= "UPDATE `tbl_order` SET `quantity` = '$quantity' WHERE orderid = '$cartid' ";
+  
+   $query= "UPDATE `tbl_order` SET `quantity` = '$quantity' WHERE orderid = '$orderid' ";
             $updated_row = $this->db->update($query);
             if($updated_row){
                header("Location:order.php");

@@ -5,9 +5,10 @@ $login =  Session::get("customerLogin");
 if($login==false){
     header("Location:login.php");
 }
-if($_SERVER['REQUEST_METHOD']=='POST'){
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])){
     $orderid=$_POST['orderid'];
     $quantity=$_POST['quantity'];
+   
     
     $updateorder = $ct->updateOrderquantity($orderid,$quantity);
     if($quantity<=0){
@@ -51,25 +52,34 @@ if(isset($_GET['delorder'])){
                 <td>
                     <form action="" method="post">
                         <input type="hidden" name="orderid" value="<?php echo $result['orderid']; ?>"/>
-                        <input type="number" name="quantity" value="<?php echo $result['quantity']; ?>"/>
-                        <input type="submit" name="submit" value="Update"/>
-                    </form>
+                        <?php 
+                          if($result['status']=='0'){ ?>
+                            <input type="number"name="quantity" value="<?php echo $result['quantity']; ?>"/>
+                            <input type="submit" name="submit" value="Update"/>
+                            <?php   }else {?>
+                                <input type="number" readonly="readonly" name="quantity" value="<?php echo $result['quantity']; ?>"/>
+                            <?php   }
+                    
+                        ?>
+                       
+                       </form>   
+                    
                 </td>
+                <form action="" method="post">
+                <td>৳ 
                
-                <td>৳
-                <?php 
-                    $getdiscount = $cmr->getCusDiscountData($id);
-                    if($getdiscount){
-                    $delicharge = 60;
-                    $total = $result['price']* $result['quantity'];
+                 <?php  
+                if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])){
+                    $total = ($result['price']*$result['quantity'])-0.1;
                     echo $total;
-                    }else{
-                    $delicharge = 150;
-                    $total = $result['price']* $result['quantity'];
+                  }
+                    $total = ($result['price']*$result['quantity']);
                     echo $total;
-                    }
+               
                 ?>
+                <input type="submit" name="submit" value="Confirm"/>
                 </td>
+                </form>
                 <td><?php echo $fm->formatDate($result['date']);?></td>
                 <td><?php 
                     if($result['status']=='0'){

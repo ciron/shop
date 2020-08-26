@@ -73,37 +73,14 @@ if(isset($_GET['orderid']) && $_GET['orderid']== 'order'){
                         <td>10%</td>
                     </tr>
                     <tr>
-                        <th width="60%">Delivery Charge : </th>
-                     
-                        <td >
-                        <?php 
-                        $getdiscount = $cmr->getCusDiscountData($id);
-                        if($getdiscount){?>
-                           60 TK  (In Dhaka City)
-                            <?php }else{ ?>
-                                150 TK (Outside Of Dhaka City)
-                                <?php } ?>
-                   
-                      </td>
-                       
-                    </tr>
-                    <tr>
                         <th>Grand Total :</th>
                         <td>TK.
                         <?php 
-                        $getdiscount = $cmr->getCusDiscountData($id);
-                        if($getdiscount){
-
-                            $delicharge = 60;
+                        
                             $vat = $sum*0.1;
-                            $grandtotal = $sum +$vat+$delicharge ;
+                            $grandtotal = $sum +$vat ;
                             echo $grandtotal;
-                        }else{
-                            $delicharge = 150;
-                            $vat = $sum*0.1;
-                            $grandtotal = $sum +$vat+$delicharge ;
-                            echo $grandtotal;
-                        }
+                        
                         ?> BDT
                         </td>
                     </tr>
