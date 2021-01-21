@@ -31,8 +31,9 @@
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>Contact</h4>
 						<ul>
-							<li><span>01868190622</span></li>
-							<li><span>01948451766</span></li>
+							<li><span>hide for fiver security</span></li>
+							<li><span>hide for fiver security</span></li>
+							<!-- <li><span>01948451766</span></li> -->
 						</ul>
 						<div class="social-icons">
 							<h4>Follow Us</h4>

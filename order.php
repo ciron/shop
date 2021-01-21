@@ -49,37 +49,19 @@ if(isset($_GET['delorder'])){
                 <td><?php echo $i; ?></td>
                 <td><?php echo $result['productname'];?></td>
                 <td><img src="admin/<?php echo $result['image'];?>" alt=""/></td>
-                <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="orderid" value="<?php echo $result['orderid']; ?>"/>
-                        <?php 
-                          if($result['status']=='0'){ ?>
-                            <input type="number"name="quantity" value="<?php echo $result['quantity']; ?>"/>
-                            <input type="submit" name="submit" value="Update"/>
-                            <?php   }else {?>
-                                <input type="number" readonly="readonly" name="quantity" value="<?php echo $result['quantity']; ?>"/>
-                            <?php   }
-                    
-                        ?>
-                       
-                       </form>   
-                    
-                </td>
-                <form action="" method="post">
+                <td> <?php echo $result['quantity']; ?> </td>
+                
                 <td>৳ 
                
                  <?php  
-                if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])){
-                    $total = ($result['price']*$result['quantity'])-0.1;
-                    echo $total;
-                  }
-                    $total = ($result['price']*$result['quantity']);
+                
+                    $total = ($result['price']);
                     echo $total;
                
                 ?>
-                <input type="submit" name="submit" value="Confirm"/>
+               
                 </td>
-                </form>
+              
                 <td><?php echo $fm->formatDate($result['date']);?></td>
                 <td><?php 
                     if($result['status']=='0'){

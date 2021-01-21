@@ -2,7 +2,7 @@
 ob_start();
 
 
-include_once $_SERVER['DOCUMENT_ROOT']. '/shop/config/config.php';
+include_once $_SERVER['DOCUMENT_ROOT']. '/pharmacys/config/config.php';
 
 
 class Database{
@@ -20,7 +20,7 @@ class Database{
             $this->link=mysqli_connect($this->host,$this->user,$this->pass,$this->dbname);
 
             if(!$this->link){
-            $this->error="connection fail".$this->link->connect_error;
+            $this->error="connection fail";
             return false;
             }
         }

@@ -84,9 +84,9 @@
 				     	<h2>Contact Address:</h2>
 						    	<p>Mirpur 2</p>
 						   		<p>Dhaka</p>
-				   		<p>Phone:(+880) 1868 190622</p>
+				   		<!-- <p>Phone:(+880) 1868 190622</p> -->
 				   		
-				 	 	<p>Email: <span>chiron.cse1998@gmail.com</span></p>
+				 	 	<!-- <p>Email: <span>chiron.cse1998@gmail.com</span></p> -->
 				   		
 				   </div>
 				 </div>
